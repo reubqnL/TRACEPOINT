@@ -1,5 +1,5 @@
 {
-  "name": "tracepoint",
+  "name": "TRACEPOINT",
   "version": "1.0.0",
   "description": "**Open-source OSINT desktop application for Windows and macOS.**",
   "main": "dist-electron/main.js",
