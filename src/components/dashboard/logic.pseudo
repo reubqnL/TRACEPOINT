@@ -1,0 +1,30 @@
+CREATE div, CLASS card-grid
+    CREATE div, CLASS card-item
+        ICON FileSearch
+        TITLE Total Investigations
+        NUMBER null
+        SUBTITLE Across your investigation workspace
+        CLOSE div
+
+    CREATE div, CLASS card-item
+        ICON ScanSearch
+        TITLE Active Investigations
+        NUMBER null
+        SUBTITLE Currently open and in progress
+        CLOSE div
+
+    CREATE div, CLASS card-item
+        ICON Bookmark
+        TITLE Saved Bookmarks
+        NUMBER null
+        SUBTITLE Sources saved for further analysis
+        CLOSE div
+
+    CREATE div, CLASS card-item
+        ICON FileText
+        TITLE Reports Generated
+        NUMBER null
+        SUBTITLE Compiled investigation findings
+        CLOSE div
+
+CLOSE div
