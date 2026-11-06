@@ -1,4 +1,11 @@
-import { ArrowRight, Globe, UserRound, Search, MoreHorizontal, Clock3 } from "lucide-react";
+import {
+    ArrowRight,
+    Globe,
+    UserRound,
+    Search,
+    MoreHorizontal,
+    Clock3
+} from "lucide-react";
 
 const investigations = [
     {
@@ -43,6 +50,8 @@ function RecentInvestigations() {
                 </button>
             </div>
 
+            <hr />
+
             <div className="recent-investigations-table">
 
                 <div className="recent-investigations-table-header">
@@ -57,7 +66,10 @@ function RecentInvestigations() {
                     const Icon = investigation.icon;
 
                     return (
-                        <div className="recent-investigations-row" key={investigation.name}>
+                        <div
+                            className="recent-investigations-row"
+                            key={investigation.name}
+                        >
                             <div className="recent-investigations-name">
                                 <div className="recent-investigations-icon">
                                     <Icon size={18} />
@@ -93,6 +105,7 @@ function RecentInvestigations() {
                         </div>
                     );
                 })}
+
             </div>
         </section>
     );
