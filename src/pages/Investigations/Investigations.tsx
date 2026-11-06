@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const investigations = [
     {
         name: "Discord username",
@@ -17,6 +19,9 @@ const investigations = [
 ];
 
 function Investigations() {
+
+    const [showMessage, setShowMessage] = useState(false);
+
     return (
         <section className="investigations-container">
             <div className="text">
@@ -25,14 +30,21 @@ function Investigations() {
             </div>
 
             <div className="button">
-                <button>New Investigation</button>
+                <button onClick={()=> setShowMessage(!showMessage)}>
+                    New Investigation
+                </button>
+                {showMessage && (
+                    <p>New investigation coming soon!</p>
+                )}
             </div>
 
             <div className="investigations-list">
                 {investigations.map((investigation) => {
                     return (
-                        <div>
+                        <div className="investigation-card" key={investigation.name}>
                             <h3>{investigation.name}</h3>
+                            <p>{investigation.status}</p>
+                            <p>{investigation.date}</p>
                         </div>
                     );
                 })}
