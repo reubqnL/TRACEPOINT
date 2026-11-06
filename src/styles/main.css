@@ -94,6 +94,112 @@
   float: right;
 }
 
+.topbar {
+  height: 75px;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: #0d1017;
+  border-bottom: 1px solid #202530;
+  /* Page title */
+}
+.topbar-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.topbar-title h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f1f3f5;
+}
+.topbar-title span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #9299a5;
+}
+.topbar-line {
+  width: 3px;
+  height: 32px;
+  background: #4f8cff;
+  border-radius: 4px;
+}
+.topbar {
+  /* Right-side actions */
+}
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.topbar {
+  /* Search field */
+}
+.topbar-search {
+  width: 220px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  background: #141923;
+  border: 1px solid #252d3a;
+  border-radius: 6px;
+  color: #9299a5;
+}
+.topbar-search input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f1f3f5;
+  font-size: 13px;
+}
+.topbar-search input::placeholder {
+  color: #737d8d;
+}
+.topbar {
+  /* Icon buttons */
+}
+.topbar-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid #252d3a;
+  border-radius: 6px;
+  color: #aab2bf;
+  cursor: pointer;
+}
+.topbar-icon:hover {
+  background: #181e29;
+  color: #ffffff;
+}
+.topbar {
+  /* Profile button */
+}
+.topbar-profile {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 11px;
+  background: #141923;
+  border: 1px solid #252d3a;
+  border-radius: 6px;
+  color: #c5cbd5;
+  font-size: 13px;
+  cursor: pointer;
+}
+.topbar-profile:hover {
+  background: #1a202c;
+}
+
 /* Global reset */
 * {
   margin: 0;
@@ -102,7 +208,9 @@
 }
 
 /* Document */
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   min-height: 100%;
 }
@@ -119,23 +227,19 @@ body {
 .app {
   display: flex;
   min-height: 100vh;
+  width: 100%;
 }
+
+.app-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .app-main {
   flex: 1;
-  padding: 40px;
-}
-
-/* Typography */
-h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.8px;
-}
-
-p {
-  margin-top: 10px;
-  color: #9299a5;
-  line-height: 1.6;
+  padding: 32px;
 }
 
 /*# sourceMappingURL=main.css.map */
