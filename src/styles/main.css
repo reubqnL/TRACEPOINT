@@ -1,0 +1,41 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Document */
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+}
+
+/* Application */
+body {
+  background: #090b10;
+  color: #f1f3f5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 40px;
+}
+
+/* Typography */
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+p {
+  margin-top: 10px;
+  color: #9299a5;
+  line-height: 1.6;
+}
+
+/*# sourceMappingURL=main.css.map */
