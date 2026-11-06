@@ -1,0 +1,109 @@
+.topbar {
+  height: 75px;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: #0d1017;
+  border-bottom: 1px solid #202530;
+
+  /* Page title */
+  &-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #f1f3f5;
+    }
+
+    span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: #9299a5;
+    }
+  }
+
+  &-line {
+    width: 3px;
+    height: 32px;
+    background: #4f8cff;
+    border-radius: 4px;
+  }
+
+  /* Right-side actions */
+  &-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* Search field */
+  &-search {
+    width: 220px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    background: #141923;
+    border: 1px solid #252d3a;
+    border-radius: 6px;
+    color: #9299a5;
+
+    input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #f1f3f5;
+      font-size: 13px;
+
+      &::placeholder {
+        color: #737d8d;
+      }
+    }
+  }
+
+  /* Icon buttons */
+  &-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid #252d3a;
+    border-radius: 6px;
+    color: #aab2bf;
+    cursor: pointer;
+
+    &:hover {
+      background: #181e29;
+      color: #ffffff;
+    }
+  }
+
+  /* Profile button */
+  &-profile {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 11px;
+    background: #141923;
+    border: 1px solid #252d3a;
+    border-radius: 6px;
+    color: #c5cbd5;
+    font-size: 13px;
+    cursor: pointer;
+
+    &:hover {
+      background: #1a202c;
+    }
+  }
+}
