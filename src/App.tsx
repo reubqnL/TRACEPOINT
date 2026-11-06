@@ -1,6 +1,7 @@
 import Sidebar from "./components/layout/Sidebar";
 import Topbar from "./components/layout/Topbar";
 import WelcomeSection from "./components/dashboard/WelcomeSection";
+import StatsCards from "./components/dashboard/StatsCards";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
 
                 <main className="app-main">
                     <WelcomeSection />
+                    <StatsCards />
                 </main>
             </div>
         </div>

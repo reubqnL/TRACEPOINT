@@ -257,6 +257,42 @@
   background: #181f2b;
 }
 
+.card-grid {
+  display: flex;
+  flex-direction: row;
+  margin-top: 32px;
+  max-width: 100%;
+  gap: 2vw;
+  width: 100%;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #101722;
+  flex: 1;
+  min-width: 0;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid #202a38;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.card-item .number {
+  font-weight: bold;
+  font-size: 28px;
+}
+.card-item h3, .card-item .subtitle {
+  color: #9AA6B8;
+}
+.card-item:hover {
+  cursor: pointer;
+  border-color: #3478e5;
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
 /* Global reset */
 * {
   margin: 0;

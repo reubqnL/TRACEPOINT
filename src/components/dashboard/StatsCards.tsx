@@ -13,7 +13,7 @@ function StatsCards() {
             </div>
 
             <div className="card-item active-investigation">
-                    <ScanSearch size={18} />
+                    <ScanSearch size={18} color="#3478E5"/>
                     <h3>Active Investigations</h3>
                     <span className="number">0</span>
                     <p className="subtitle">
