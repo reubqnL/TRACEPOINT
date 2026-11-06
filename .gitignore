@@ -53,3 +53,4 @@ fabric.properties
 # modules.xml
 
 node_modules/
+.idea/
