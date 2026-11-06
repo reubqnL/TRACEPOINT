@@ -21,6 +21,7 @@ const investigations = [
 function Investigations() {
 
     const [showMessage, setShowMessage] = useState(false);
+    const [investigationName, setInvestigationName] = useState("");
 
     return (
         <section className="investigations-container">
@@ -30,11 +31,17 @@ function Investigations() {
             </div>
 
             <div className="button">
-                <button onClick={()=> setShowMessage(!showMessage)}>
+                <button onClick={() => setShowMessage(!showMessage)}>
                     New Investigation
                 </button>
+
                 {showMessage && (
-                    <p>New investigation coming soon!</p>
+                    <input
+                        type="text"
+                        placeholder="Enter investigation name..."
+                        value={investigationName}
+                        onChange={(event) => setInvestigationName(event.target.value)}
+                    />
                 )}
             </div>
 

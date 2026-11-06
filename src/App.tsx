@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Sidebar from "./components/layout/Sidebar";
 import Topbar from "./components/layout/Topbar";
 import WelcomeSection from "./components/dashboard/WelcomeSection";
@@ -5,9 +7,13 @@ import StatsCards from "./components/dashboard/StatsCards";
 import RecentInvestigations from "./components/dashboard/RecentInvestigations";
 
 function App() {
+    const [activePage, setActivePage] = useState("Dashboard");
+
     return (
         <div className="app">
-            <Sidebar />
+            <Sidebar
+                activePage={activePage}
+                setActivePage={setActivePage} />
 
             <div className="app-content">
                 <Topbar />
