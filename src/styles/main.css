@@ -317,6 +317,60 @@
   }
 }
 /* LIGHT SWEEP EFFECT BASED OFF: https://codepen.io/zhanghx/pen/NZpGBY */
+.recent-investigations {
+  width: 100%;
+  margin-top: 32px;
+  background: #202a38;
+}
+.recent-investigations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.recent-investigations-view-all {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.recent-investigations-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.recent-investigations-table-header, .recent-investigations-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) 1fr 1.2fr 0.8fr 40px;
+  align-items: center;
+  column-gap: 20px;
+  width: 100%;
+}
+.recent-investigations-row {
+  min-height: 76px;
+}
+.recent-investigations-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.recent-investigations-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.recent-investigations-updated {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.recent-investigations-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Global reset */
 * {
   margin: 0;
