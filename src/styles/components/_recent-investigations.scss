@@ -1,0 +1,67 @@
+.recent-investigations {
+  width: 100%;
+  margin-top: 32px;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &-view-all {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &-table-header,
+  &-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 2fr) 1fr 1.2fr 0.8fr 40px;
+    align-items: center;
+    column-gap: 20px;
+    width: 100%;
+  }
+
+  &-table-header {
+    // Your header styling goes here
+  }
+
+  &-row {
+    // Your row styling goes here
+    min-height: 76px;
+  }
+
+  &-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &-updated {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  &-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
