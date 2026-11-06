@@ -27,7 +27,7 @@ function Sidebar() {
                 </div>
 
                 <div>
-                    <h2>Tracepoint</h2>
+                    <h2>TRACEPOINT</h2>
                     <span>INVESTIGATION WORKSPACE</span>
                 </div>
             </div>

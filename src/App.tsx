@@ -1,5 +1,8 @@
 import Sidebar from "./components/layout/Sidebar";
 import Topbar from "./components/layout/Topbar";
+import WelcomeSection from "./components/dashboard/WelcomeSection";
+import StatsCards from "./components/dashboard/StatsCards";
+import RecentInvestigations from "./components/dashboard/RecentInvestigations";
 
 function App() {
     return (
@@ -10,7 +13,9 @@ function App() {
                 <Topbar />
 
                 <main className="app-main">
-                    <h1>Welcome to Tracepoint</h1>
+                    <WelcomeSection />
+                    <StatsCards />
+                    <RecentInvestigations />
                 </main>
             </div>
         </div>
