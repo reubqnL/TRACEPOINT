@@ -273,6 +273,8 @@
   background: #101722;
   flex: 1;
   min-width: 0;
+  position: relative;
+  overflow: hidden;
   border-radius: 10px;
   padding: 15px;
   border: 1px solid #202a38;
@@ -286,13 +288,35 @@
 .card-item h3, .card-item .subtitle {
   color: #9AA6B8;
 }
+.card-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
 .card-item:hover {
   cursor: pointer;
   border-color: #3478e5;
   transform: translateY(-2px);
-  transition: 0.2s ease;
+}
+.card-item:hover::before {
+  animation: card-glint 0.7s ease;
 }
 
+@keyframes card-glint {
+  from {
+    left: -120%;
+  }
+  to {
+    left: 160%;
+  }
+}
+/* LIGHT SWEEP EFFECT BASED OFF: https://codepen.io/zhanghx/pen/NZpGBY */
 /* Global reset */
 * {
   margin: 0;
