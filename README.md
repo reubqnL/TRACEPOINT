@@ -56,7 +56,7 @@ The planned technology stack includes:
 | TypeScript | Application logic |
 | Node.js | Backend functionality |
 | Vite | Development and build tooling |
-| Tailwind CSS | Interface styling |
+| SCSS | Interface styling |
 | SQLite | Local data storage |
 | Electron Builder | Application packaging |
 
