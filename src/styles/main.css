@@ -644,6 +644,88 @@
   margin: 0;
 }
 
+.investigation-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.investigation-modal {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px;
+  background: #151e2b;
+  border: 1px solid #30394a;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+.investigation-modal h2 {
+  color: #e5eaf2;
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+.investigation-modal p {
+  color: #8795a8;
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+.investigation-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.investigation-modal label {
+  color: #e5eaf2;
+  font-size: 13px;
+  font-weight: 500;
+}
+.investigation-modal input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  background: #101722;
+  color: #e5eaf2;
+  border: 1px solid #30394a;
+  border-radius: 7px;
+  outline: none;
+}
+.investigation-modal input:focus {
+  border-color: #3478f6;
+}
+.investigation-modal .investigation-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+.investigation-modal .investigation-modal-actions button {
+  padding: 10px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+.investigation-modal .investigation-modal-actions button:first-child {
+  background: transparent;
+  color: #aab5c5;
+  border: 1px solid #30394a;
+}
+.investigation-modal .investigation-modal-actions button:last-child {
+  background: #3478f6;
+  color: white;
+  border: 1px solid #3478f6;
+}
+.investigation-modal .investigation-modal-actions button:last-child:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Global reset */
 * {
   margin: 0;

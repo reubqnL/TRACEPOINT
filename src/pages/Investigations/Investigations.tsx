@@ -1,12 +1,22 @@
 import { useState } from "react";
 
 function Investigations() {
-
-    // controls whether the input field is displayed
-    const [showMessage, setShowMessage] = useState(false);
-
-    // then store what the user types into the input
+    const [showModal, setShowModal] = useState(false);
     const [investigationName, setInvestigationName] = useState("");
+    const [investigations, setInvestigations] = useState<string[]>([]);
+
+    function createInvestigation(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        const name = investigationName.trim();
+
+        if (!name) return;
+
+        setInvestigations((previous) => [...previous, name]);
+
+        setInvestigationName("");
+        setShowModal(false);
+    }
 
     return (
         <section className="investigations-container">
@@ -17,28 +27,73 @@ function Investigations() {
             </div>
 
             <div className="button">
-                <button onClick={() => setShowMessage(!showMessage)}>
+                <button onClick={() => setShowModal(true)}>
                     New Investigation
                 </button>
+            </div>
 
-                {showMessage && (
-                    <input
-                        type="text"
-                        placeholder="Enter investigation name..."
-                        value={investigationName}
-                        onChange={(event) => setInvestigationName(event.target.value)}
-                    />
+            <div className="investigations-list">
+                {investigations.length === 0 ? (
+                    <div className="investigations-empty">
+                        <h3>No investigations yet</h3>
+                        <p>Create your first investigation to get started.</p>
+                    </div>
+                ) : (
+                    investigations.map((name, index) => (
+                        <div className="investigation-card" key={index}>
+                            <h3>{name}</h3>
+                        </div>
+                    ))
                 )}
             </div>
 
-            {/* Empty state displayed when there are no investigations */}
-            <div className="investigations-list">
+            {showModal && (
+                <div className="investigation-modal-overlay">
+                    <div
+                        className="investigation-modal"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="modal-title"
+                    >
+                        <h2 id="modal-title">New Investigation</h2>
 
-                <div className="investigations-empty">
-                    <h3>No investigations yet</h3>
-                    <p>Create your first investigation to get started.</p>
+                        <p>Give your investigation a name to get started.</p>
+
+                        <form onSubmit={createInvestigation}>
+                            <label htmlFor="investigation-name">
+                                Investigation name
+                            </label>
+
+                            <input
+                                id="investigation-name"
+                                type="text"
+                                placeholder="e.g. Username Research"
+                                value={investigationName}
+                                onChange={(event) =>
+                                    setInvestigationName(event.target.value)
+                                }
+                                autoFocus
+                            />
+
+                            <div className="investigation-modal-actions">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setShowModal(false);
+                                        setInvestigationName("");
+                                    }}
+                                >
+                                    Cancel
+                                </button>
+
+                                <button type="submit" disabled={!investigationName.trim()}>
+                                    Create Investigation
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            )}
         </section>
     );
 }
