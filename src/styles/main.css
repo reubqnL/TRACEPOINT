@@ -389,6 +389,8 @@
   Keep these commented out for now.
   We can restore them when real investigation records are displayed.
 
+  Edit: Collaborator if you're seeing this, we can use this style but I removed all dummy data
+
   // Shared grid layout
   &-table-header,
   &-row {
@@ -560,6 +562,86 @@
   margin: 0;
   max-width: 320px;
   line-height: 1.5;
+}
+
+.investigations-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.investigations-container .text .title {
+  color: #e5eaf2;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+.investigations-container .text p {
+  color: #8795a8;
+  font-size: 14px;
+  margin: 0;
+}
+.investigations-container .button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.investigations-container .button button {
+  background: #3478f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.investigations-container .button button:hover {
+  background: #2865d8;
+}
+.investigations-container .button input {
+  background: #1b2230;
+  color: #e5eaf2;
+  border: 1px solid #30394a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  outline: none;
+}
+.investigations-container .button input::placeholder {
+  color: #8795a8;
+}
+.investigations-container .button input:focus {
+  border-color: #3478f6;
+}
+.investigations-container .investigations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.investigations-container .investigations-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
+  background: #101722;
+  border: 1px solid #202a38;
+  border-radius: 10px;
+}
+.investigations-container .investigations-empty h3 {
+  color: #e5eaf2;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+.investigations-container .investigations-empty p {
+  color: #8795a8;
+  font-size: 14px;
+  margin: 0;
 }
 
 /* Global reset */
