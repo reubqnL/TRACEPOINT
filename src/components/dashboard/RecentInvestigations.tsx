@@ -1,3 +1,5 @@
+// currently just an example of what it should look like in the future
+
 import {
     ArrowRight,
     Globe,

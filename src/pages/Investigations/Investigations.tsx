@@ -1,33 +1,19 @@
 import { useState } from "react";
 
-const investigations = [
-    {
-        name: "Discord username",
-        status: "Active",
-        date: "6 November 2026"
-    },
-    {
-        name: "GitHub profile",
-        status: "Completed",
-        date: "5 November 2026"
-    },
-    {
-        name: "Reddit username",
-        status: "Active",
-        date: "4 November 2026"
-    }
-];
-
 function Investigations() {
 
+    // controls whether the input field is displayed
     const [showMessage, setShowMessage] = useState(false);
+
+    // then store what the user types into the input
     const [investigationName, setInvestigationName] = useState("");
 
     return (
         <section className="investigations-container">
+
             <div className="text">
                 <h2 className="title">Investigations</h2>
-                <p>Lorem</p>
+                <p>Manage and organise your username investigations.</p>
             </div>
 
             <div className="button">
@@ -45,16 +31,13 @@ function Investigations() {
                 )}
             </div>
 
+            {/* Empty state displayed when there are no investigations */}
             <div className="investigations-list">
-                {investigations.map((investigation) => {
-                    return (
-                        <div className="investigation-card" key={investigation.name}>
-                            <h3>{investigation.name}</h3>
-                            <p>{investigation.status}</p>
-                            <p>{investigation.date}</p>
-                        </div>
-                    );
-                })}
+
+                <div className="investigations-empty">
+                    <h3>No investigations yet</h3>
+                    <p>Create your first investigation to get started.</p>
+                </div>
             </div>
         </section>
     );
