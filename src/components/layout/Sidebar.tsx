@@ -1,4 +1,17 @@
-import { LayoutDashboard, Search, FolderSearch, Bookmark, FileText, Settings, Shield } from "lucide-react";
+import {
+    LayoutDashboard,
+    Search,
+    FolderSearch,
+    Bookmark,
+    FileText,
+    Settings,
+    Shield
+} from "lucide-react";
+
+type SidebarProps = {
+    activePage: string;
+    setActivePage: (page: string) => void;
+};
 
 const navigation = [
     {
@@ -18,7 +31,7 @@ const navigation = [
     },
 ];
 
-function Sidebar() {
+function Sidebar({ activePage, setActivePage }: SidebarProps) {
     return (
         <aside className="sidebar">
             <div className="sidebar-brand">
@@ -35,13 +48,13 @@ function Sidebar() {
             <nav className="sidebar-navigation">
                 {navigation.map((section) => (
                     <div className="sidebar-section" key={section.title}>
-            <span className="sidebar-section-title">
-              {section.title}
-            </span>
+                        <span className="sidebar-section-title">
+                            {section.title}
+                        </span>
 
                         {section.items.map((item) => {
                             const Icon = item.icon;
-                            const isActive = item.label === "Dashboard";
+                            const isActive = item.label === activePage;
 
                             return (
                                 <button
@@ -49,6 +62,7 @@ function Sidebar() {
                                     className={`sidebar-link ${
                                         isActive ? "sidebar-link-active" : ""
                                     }`}
+                                    onClick={() => setActivePage(item.label)}
                                 >
                                     <Icon size={18} strokeWidth={1.8} />
                                     <span>{item.label}</span>
@@ -72,4 +86,5 @@ function Sidebar() {
         </aside>
     );
 }
+
 export default Sidebar;

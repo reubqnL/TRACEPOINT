@@ -383,123 +383,347 @@
   flex-direction: column;
   width: 100%;
 }
-.recent-investigations-table-header, .recent-investigations-row {
-  display: grid;
-  grid-template-columns: minmax(220px, 2fr) 1fr 1.2fr 0.8fr 40px;
+.recent-investigations {
+  /*
+  OLD INVESTIGATION TABLE STYLES
+  Keep these commented out for now.
+  We can restore them when real investigation records are displayed.
+
+  Edit: Collaborator if you're seeing this, we can use this style but I removed all dummy data
+
+  // Shared grid layout
+  &-table-header,
+  &-row {
+      display: grid;
+      grid-template-columns: minmax(220px, 2fr) 1fr 1.2fr 0.8fr 40px;
+      align-items: center;
+      column-gap: 20px;
+      width: 100%;
+  }
+
+  // Table headings
+  &-table-header {
+      min-height: 42px;
+      padding: 10px 0;
+      color: #718198;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1px solid #293648;
+  }
+
+  // Investigation rows
+  &-row {
+      min-height: 76px;
+      padding: 10px 0;
+      box-sizing: border-box;
+      border-bottom: 1px solid $border;
+      transition: background 0.2s ease;
+
+      &:hover {
+          background: rgba(255, 255, 255, 0.025);
+      }
+
+      &:last-child {
+          border-bottom: none;
+      }
+  }
+
+  // Investigation name
+  &-name {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+
+      h3 {
+          color: $text-primary;
+          font-size: 13px;
+          font-weight: 500;
+          margin: 0 0 5px;
+      }
+
+      p {
+          color: $text-secondary;
+          font-size: 12px;
+          margin: 0;
+      }
+  }
+
+  // Investigation icon
+  &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      background: #192536;
+      border: 1px solid #29384b;
+      border-radius: 8px;
+      color: #91a8c9;
+  }
+
+  // Investigation type
+  &-type {
+      color: #a6b3c5;
+      font-size: 12px;
+  }
+
+  // Last updated
+  &-updated {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: $text-secondary;
+      font-size: 12px;
+
+      svg {
+          color: #718198;
+          flex-shrink: 0;
+      }
+  }
+
+  // Status labels
+  &-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+
+      &-active {
+          color: #62d69b;
+          background: rgba(52, 211, 153, 0.10);
+          border: 1px solid rgba(52, 211, 153, 0.20);
+      }
+
+      &-completed {
+          color: #83aaff;
+          background: rgba(108, 159, 255, 0.10);
+          border: 1px solid rgba(108, 159, 255, 0.20);
+      }
+
+      &-paused {
+          color: #e5b96c;
+          background: rgba(245, 185, 75, 0.10);
+          border: 1px solid rgba(245, 185, 75, 0.20);
+      }
+  }
+
+  // More options button
+  &-more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: #718198;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+          color: $text-primary;
+          background: #192536;
+          border-color: #29384b;
+      }
+  }
+  */
+}
+.recent-investigations-empty {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  column-gap: 20px;
-  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 35px 20px;
 }
-.recent-investigations-table-header {
-  min-height: 42px;
-  padding: 10px 0;
-  color: #718198;
-  font-size: 11px;
+.recent-investigations-empty svg {
+  color: #8795a8;
+  margin-bottom: 12px;
+}
+.recent-investigations-empty h3 {
+  color: #e5eaf2;
+  font-size: 15px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  border-bottom: 1px solid #293648;
+  margin: 0 0 8px;
 }
-.recent-investigations-row {
-  min-height: 76px;
-  padding: 10px 0;
-  box-sizing: border-box;
-  border-bottom: 1px solid #202a38;
-  transition: background 0.2s ease;
+.recent-investigations-empty p {
+  color: #8795a8;
+  font-size: 13px;
+  margin: 0;
+  max-width: 320px;
+  line-height: 1.5;
 }
-.recent-investigations-row:hover {
-  background: rgba(255, 255, 255, 0.025);
+
+.investigations-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-.recent-investigations-row:last-child {
-  border-bottom: none;
+.investigations-container .text .title {
+  color: #e5eaf2;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px;
 }
-.recent-investigations-name {
+.investigations-container .text p {
+  color: #8795a8;
+  font-size: 14px;
+  margin: 0;
+}
+.investigations-container .button {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-width: 0;
+  flex-wrap: wrap;
 }
-.recent-investigations-name h3 {
+.investigations-container .button button {
+  background: #3478f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.investigations-container .button button:hover {
+  background: #2865d8;
+}
+.investigations-container .button input {
+  background: #1b2230;
+  color: #e5eaf2;
+  border: 1px solid #30394a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  outline: none;
+}
+.investigations-container .button input::placeholder {
+  color: #8795a8;
+}
+.investigations-container .button input:focus {
+  border-color: #3478f6;
+}
+.investigations-container .investigations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.investigations-container .investigations-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
+  background: #101722;
+  border: 1px solid #202a38;
+  border-radius: 10px;
+}
+.investigations-container .investigations-empty h3 {
+  color: #e5eaf2;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+.investigations-container .investigations-empty p {
+  color: #8795a8;
+  font-size: 14px;
+  margin: 0;
+}
+
+.investigation-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.investigation-modal {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px;
+  background: #151e2b;
+  border: 1px solid #30394a;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+.investigation-modal h2 {
+  color: #e5eaf2;
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+.investigation-modal p {
+  color: #8795a8;
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+.investigation-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.investigation-modal label {
   color: #e5eaf2;
   font-size: 13px;
   font-weight: 500;
-  margin: 0 0 5px;
 }
-.recent-investigations-name p {
-  color: #8795a8;
-  font-size: 12px;
-  margin: 0;
+.investigation-modal input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  background: #101722;
+  color: #e5eaf2;
+  border: 1px solid #30394a;
+  border-radius: 7px;
+  outline: none;
 }
-.recent-investigations-icon {
+.investigation-modal input:focus {
+  border-color: #3478f6;
+}
+.investigation-modal .investigation-modal-actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  background: #192536;
-  border: 1px solid #29384b;
-  border-radius: 8px;
-  color: #91a8c9;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
 }
-.recent-investigations-type {
-  color: #a6b3c5;
-  font-size: 12px;
-}
-.recent-investigations-updated {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: #8795a8;
-  font-size: 12px;
-}
-.recent-investigations-updated svg {
-  color: #718198;
-  flex-shrink: 0;
-}
-.recent-investigations-status {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 11px;
+.investigation-modal .investigation-modal-actions button {
+  padding: 10px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
   font-weight: 500;
 }
-.recent-investigations-status-active {
-  color: #62d69b;
-  background: rgba(52, 211, 153, 0.1);
-  border: 1px solid rgba(52, 211, 153, 0.2);
-}
-.recent-investigations-status-completed {
-  color: #83aaff;
-  background: rgba(108, 159, 255, 0.1);
-  border: 1px solid rgba(108, 159, 255, 0.2);
-}
-.recent-investigations-status-paused {
-  color: #e5b96c;
-  background: rgba(245, 185, 75, 0.1);
-  border: 1px solid rgba(245, 185, 75, 0.2);
-}
-.recent-investigations-more {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  padding: 0;
+.investigation-modal .investigation-modal-actions button:first-child {
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  color: #718198;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  color: #aab5c5;
+  border: 1px solid #30394a;
 }
-.recent-investigations-more:hover {
-  color: #e5eaf2;
-  background: #192536;
-  border-color: #29384b;
+.investigation-modal .investigation-modal-actions button:last-child {
+  background: #3478f6;
+  color: white;
+  border: 1px solid #3478f6;
+}
+.investigation-modal .investigation-modal-actions button:last-child:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Global reset */
