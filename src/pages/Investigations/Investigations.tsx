@@ -8,7 +8,7 @@ function Investigations() {
     const [investigations, setInvestigations] = useState<string[]>([]);
 
     function createInvestigation(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
+        event.preventDefault(); // dev note, pls keep this to stop page refresh
 
         const name = investigationName.trim();
 
