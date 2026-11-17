@@ -1,5 +1,4 @@
 // attribution: https://headlessui.com/react/dialog
-
 import { useState } from "react";
 
 function Investigations() {
