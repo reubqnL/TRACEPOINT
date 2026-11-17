@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.electron.json",
+  "compilerOptions": { "outDir": "dist-test", "sourceMap": false },
+  "include": ["tests/**/*.ts", "engine/**/*.ts", "shared/**/*.ts", "electron/errors.ts", "electron/database/**/*.ts", "electron/ipc/to-result.ts"]
+}

@@ -199,3 +199,108 @@
   }
 }
 
+
+// ---------------------------------------------------------------------------
+// Investigation cards (persisted investigations)
+// ---------------------------------------------------------------------------
+$panel: #101722;
+$border: #202a38;
+$border-strong: #30394a;
+$text: #e5eaf2;
+$muted: #8795a8;
+$accent: #3478f6;
+$danger: #e5564f;
+
+.investigation-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 20px;
+  background: $panel;
+  border: 1px solid $border;
+  border-radius: 10px;
+
+  h3 { color: $text; font-size: 15px; font-weight: 600; margin: 0 0 6px; }
+
+  .investigation-card-meta { color: $text; font-size: 13px; margin: 0 0 4px; strong { font-weight: 600; } }
+  .investigation-card-dates { color: $muted; font-size: 12px; margin: 0; }
+
+  .investigation-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    button, select {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      background: transparent;
+      color: #aab5c5;
+      border: 1px solid $border-strong;
+      border-radius: 7px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+
+      &:hover { background: #192536; color: $text; }
+      &:focus-visible { outline: 2px solid $accent; outline-offset: 2px; }
+      &.danger { color: #fff; background: $danger; border-color: $danger; &:hover { background: #cf4540; } }
+    }
+
+    .status-select {
+      font-weight: 500;
+      &.status-active { color: #4cc38a; }
+      &.status-paused { color: #e5b04f; }
+      &.status-completed { color: #6c9fff; }
+    }
+  }
+}
+
+.investigations-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #ffb4b0;
+  background: rgba($danger, 0.1);
+  border: 1px solid rgba($danger, 0.4);
+  border-radius: 8px;
+  font-size: 13px;
+
+  button { background: transparent; color: $text; border: 1px solid $border-strong; border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+}
+
+// ---------------------------------------------------------------------------
+// Form additions
+// ---------------------------------------------------------------------------
+.investigation-modal {
+  select {
+    width: 100%;
+    padding: 12px;
+    background: $panel;
+    color: $text;
+    border: 1px solid $border-strong;
+    border-radius: 7px;
+    outline: none;
+    &:focus { border-color: $accent; }
+  }
+
+  input[aria-invalid="true"] { border-color: $danger; }
+
+  form label:not(:first-child) { margin-top: 8px; }
+
+  &.wide { max-width: 720px; max-height: calc(100vh - 40px); overflow-y: auto; }
+}
+
+.field-error {
+  color: #ff8a84;
+  font-size: 12px;
+  &.form-error { margin-top: 6px; }
+}
+
+.investigation-modal-actions button:disabled { opacity: 0.5; cursor: not-allowed; }

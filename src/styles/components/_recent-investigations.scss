@@ -266,3 +266,38 @@ $accent: #6c9fff;
     }
   }
 }
+
+// Real investigation rows (dashboard)
+.recent-investigations-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-investigations-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #202a38;
+
+  &:last-child { border-bottom: none; }
+
+  h3 { color: #e5eaf2; font-size: 13px; font-weight: 500; margin: 0 0 5px; }
+  p { color: #8795a8; font-size: 12px; margin: 0; }
+}
+
+.status-pill {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid #30394a;
+
+  &.status-active { color: #4cc38a; border-color: rgba(#4cc38a, 0.5); }
+  &.status-paused { color: #e5b04f; border-color: rgba(#e5b04f, 0.5); }
+  &.status-completed { color: #6c9fff; border-color: rgba(#6c9fff, 0.5); }
+}
