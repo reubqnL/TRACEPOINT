@@ -85,6 +85,24 @@ The project aims to maintain a shared codebase across both operating systems.
 - [ ] Additional platform integrations
 - [ ] Windows and macOS releases
 
+## Development
+
+```bash
+npm install
+npm run dev     # Vite + Electron
+npm test        # database, search-engine and IPC tests (Node >= 22.13)
+```
+
+Investigations are saved to a local SQLite file (see [docs/database.md](docs/database.md)).
+The search engine and supported platforms are described in [docs/search-engine.md](docs/search-engine.md).
+
+Optional API credentials are read from environment variables and never leave the main process:
+
+| Variable | Effect |
+|---|---|
+| `TRACEPOINT_GITHUB_TOKEN` | Raises GitHub's rate limit (no scopes needed) |
+| `TRACEPOINT_REDDIT_CLIENT_ID` / `TRACEPOINT_REDDIT_CLIENT_SECRET` | Enables Reddit search (Reddit requires registered API access) |
+
 ## Responsible Use
 
 Tracepoint is intended for legitimate OSINT research involving publicly accessible information.
