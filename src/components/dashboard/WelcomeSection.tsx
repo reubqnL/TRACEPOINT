@@ -1,4 +1,4 @@
-import { Plus, ArrowRight } from "lucide-react";
+import { Plus } from "lucide-react";
 
 function WelcomeSection() {
     return (
@@ -8,26 +8,33 @@ function WelcomeSection() {
                     YOUR WORKSPACE
                 </span>
 
-                <h1>Welcome back.</h1>
+                <h1>Let's start strong!</h1>
 
                 <p>
-                    Your investigation workspace is ready.
-                    Start something new or continue where you left off.
+                    Here's what's happening across your investigations.
+                    Keep track of your progress and pick up where you left off.
                 </p>
-            </div>
 
-            <div className="welcome-section-actions">
                 <button className="welcome-section-primary">
                     <Plus size={17} />
                     New Investigation
                 </button>
+            </div>
 
-                <button className="welcome-section-secondary">
-                    View Investigations
-                    <ArrowRight size={16} />
-                </button>
+            <div className="welcome-section-progress">
+                <div className="welcome-section-progress-header">
+                    <span>Daily progress</span>
+                    <span>65%</span>
+                </div>
+
+                <div className="welcome-section-progress-bar">
+                    <div className="welcome-section-progress-fill" />
+                </div>
+
+                <p>You've reviewed 13 of 20 sources today.</p>
             </div>
         </section>
     );
 }
+
 export default WelcomeSection;
