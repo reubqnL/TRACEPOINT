@@ -6,6 +6,7 @@ import Topbar from "./components/layout/Topbar";
 import WelcomeSection from "./components/dashboard/WelcomeSection";
 import StatsCards from "./components/dashboard/StatsCards";
 import RecentInvestigations from "./components/dashboard/RecentInvestigations";
+import InvestigationActivity from "./components/dashboard/InvestigationActivity";
 
 import Investigations from "./pages/Investigations/Investigations";
 
@@ -26,6 +27,7 @@ function App() {
                     {activePage === "Dashboard" && (
                         <>
                             <WelcomeSection />
+                            <InvestigationActivity />
                             <StatsCards />
                             <RecentInvestigations />
                         </>
