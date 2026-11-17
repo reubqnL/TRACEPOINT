@@ -1,12 +1,16 @@
 import { FileSearch, ScanSearch, Bookmark, FileText } from "lucide-react"
+import { useInvestigations } from "../../hooks/useInvestigations";
 
 function StatsCards() {
+    const { investigations } = useInvestigations();
+    const active = investigations.filter((i) => i.status === "active").length;
+
     return (
         <section className="card-grid">
             <div className="card-item total-investigation">
                     <FileSearch size={18} />
                     <h3>Total Investigations</h3>
-                    <span className="number">0</span>
+                    <span className="number">{investigations.length}</span>
                     <p className="subtitle">
                         Across your investigation workspace
                     </p>
@@ -15,7 +19,7 @@ function StatsCards() {
             <div className="card-item active-investigation">
                     <ScanSearch size={18} color="#3478E5"/>
                     <h3>Active Investigations</h3>
-                    <span className="number">0</span>
+                    <span className="number">{active}</span>
                     <p className="subtitle">
                         Currently open and in progress
                     </p>

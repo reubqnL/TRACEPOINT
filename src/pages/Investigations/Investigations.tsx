@@ -1,22 +1,46 @@
 // attribution: https://headlessui.com/react/dialog
+
 import { useState } from "react";
 
+import type { Investigation, InvestigationStatus } from "../../../shared/types/investigation";
+import SearchPanel from "../../components/search/SearchPanel";
+import { useInvestigations } from "../../hooks/useInvestigations";
+import { errorMessage } from "../../lib/api";
+import InvestigationCard from "./InvestigationCard";
+import InvestigationForm, { type InvestigationFormValues } from "./InvestigationForm";
+
+type Dialog =
+    | { kind: "create" }
+    | { kind: "edit"; investigation: Investigation }
+    | { kind: "search"; investigation: Investigation }
+    | null;
+
 function Investigations() {
-    const [showModal, setShowModal] = useState(false);
-    const [investigationName, setInvestigationName] = useState("");
-    const [investigations, setInvestigations] = useState<string[]>([]);
+    const { investigations, loading, error, reload, create, update, remove } = useInvestigations();
+    const [dialog, setDialog] = useState<Dialog>(null);
+    const [actionError, setActionError] = useState<string | null>(null);
 
-    function createInvestigation(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault(); // dev note, pls keep this to stop page refresh
+    async function run(action: () => Promise<unknown>) {
+        setActionError(null);
+        try {
+            await action();
+        } catch (e) {
+            setActionError(errorMessage(e));
+        }
+    }
 
-        const name = investigationName.trim();
-
-        if (!name) return;
-
-        setInvestigations((previous) => [...previous, name]);
-
-        setInvestigationName("");
-        setShowModal(false);
+    async function save(values: InvestigationFormValues) {
+        // Errors propagate to the form so it can show field-level messages.
+        if (dialog?.kind === "edit") {
+            const before = dialog.investigation;
+            const patch = Object.fromEntries(
+                (Object.keys(values) as (keyof InvestigationFormValues)[]).filter((k) => values[k] !== before[k]).map((k) => [k, values[k]]),
+            );
+            if (Object.keys(patch).length) await update(before.id, patch);
+        } else {
+            await create(values);
+        }
+        setDialog(null);
     }
 
     return (
@@ -28,72 +52,50 @@ function Investigations() {
             </div>
 
             <div className="button">
-                <button onClick={() => setShowModal(true)}>
+                <button onClick={() => setDialog({ kind: "create" })}>
                     New Investigation
                 </button>
             </div>
 
+            {(error || actionError) && (
+                <div className="investigations-error" role="alert">
+                    <span>{error ?? actionError}</span>
+                    {error && <button onClick={() => void reload()}>Try again</button>}
+                </div>
+            )}
+
             <div className="investigations-list">
-                {investigations.length === 0 ? (
+                {loading ? (
+                    <div className="investigations-empty"><p>Loading investigations…</p></div>
+                ) : investigations.length === 0 && !error ? (
                     <div className="investigations-empty">
                         <h3>No investigations yet</h3>
                         <p>Create your first investigation to get started.</p>
                     </div>
                 ) : (
-                    investigations.map((name, index) => (
-                        <div className="investigation-card" key={index}>
-                            <h3>{name}</h3>
-                        </div>
+                    investigations.map((investigation) => (
+                        <InvestigationCard
+                            key={investigation.id}
+                            investigation={investigation}
+                            onSearch={(i) => setDialog({ kind: "search", investigation: i })}
+                            onEdit={(i) => setDialog({ kind: "edit", investigation: i })}
+                            onStatusChange={(i, status: InvestigationStatus) => void run(() => update(i.id, { status }))}
+                            onDelete={(i) => void run(() => remove(i.id))}
+                        />
                     ))
                 )}
             </div>
 
-            {showModal && (
-                <div className="investigation-modal-overlay">
-                    <div
-                        className="investigation-modal"
-                        role="dialog"
-                        aria-modal="true"
-                        aria-labelledby="modal-title"
-                    >
-                        <h2 id="modal-title">New Investigation</h2>
+            {(dialog?.kind === "create" || dialog?.kind === "edit") && (
+                <InvestigationForm
+                    investigation={dialog.kind === "edit" ? dialog.investigation : undefined}
+                    onSubmit={save}
+                    onClose={() => setDialog(null)}
+                />
+            )}
 
-                        <p>Give your investigation a name to get started.</p>
-
-                        <form onSubmit={createInvestigation}>
-                            <label htmlFor="investigation-name">
-                                Investigation name
-                            </label>
-
-                            <input
-                                id="investigation-name"
-                                type="text"
-                                placeholder="e.g. Username Research"
-                                value={investigationName}
-                                onChange={(event) =>
-                                    setInvestigationName(event.target.value)
-                                }
-                                autoFocus
-                            />
-
-                            <div className="investigation-modal-actions">
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setShowModal(false);
-                                        setInvestigationName("");
-                                    }}
-                                >
-                                    Cancel
-                                </button>
-
-                                <button type="submit" disabled={!investigationName.trim()}>
-                                    Create Investigation
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            {dialog?.kind === "search" && (
+                <SearchPanel investigation={dialog.investigation} onClose={() => setDialog(null)} />
             )}
         </section>
     );

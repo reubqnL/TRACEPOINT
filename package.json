@@ -2,16 +2,16 @@
   "name": "TRACEPOINT",
   "version": "1.0.0",
   "description": "**Open-source OSINT desktop application for Windows and macOS.**",
-  "main": "dist-electron/main.js",
+  "main": "dist-electron/electron/main.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "dev": "concurrently -k \"vite\" \"tsc -p tsconfig.electron.json --watch\" \"wait-on http://localhost:5173 dist-electron/main.js && electron .\"",
+    "dev": "concurrently -k \"vite\" \"tsc -p tsconfig.electron.json --watch\" \"wait-on http://localhost:5173 dist-electron/electron/main.js && electron .\"",
     "build:electron": "tsc -p tsconfig.electron.json",
     "build:ui": "vite build",
     "build": "npm run build:electron && npm run build:ui",
-    "test": "echo \"No tests configured yet\""
+    "test": "tsc -p tsconfig.test.json && node --test \"dist-test/tests/**/*.test.js\""
   },
   "repository": {
     "type": "git",
@@ -39,5 +39,8 @@
     "typescript": "^7.0.2",
     "vite": "^8.3.6",
     "wait-on": "^9.5.1"
+  },
+  "engines": {
+    "node": ">=22.13.0"
   }
 }
